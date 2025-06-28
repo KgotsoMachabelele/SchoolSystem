@@ -9,12 +9,20 @@ namespace DataModels.DBModels
 {
     public class Teacher : RecordBase
     {
-        public int UserID { get; set; }
+        public string UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Subject { get; set; }
 
         public ApplicationUser User { get; set; }
         public ICollection<Course> Courses { get; set; }
+    }
+
+    public class TeacherDTO: RecordBase
+    {
+        public string UserID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Subject { get; set; }
     }
 }

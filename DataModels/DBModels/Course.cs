@@ -11,8 +11,16 @@ namespace DataModels.DBModels
     {
         public string CourseName { get; set; }
         public string Description { get; set; }
-        public int TeacherID { get; set; }
+        public string TeacherID { get; set; }
         public Teacher Teacher { get; set; }
         public ICollection<Enrollment> Enrollments { get; set; }
+    }
+
+    public class CourseDTO : RecordBase
+    {
+        public string CourseName { get; set; }
+        public string Description { get; set; }
+        public string TeacherID { get; set; }
+        public Teacher Teacher { get; set; }
     }
 }

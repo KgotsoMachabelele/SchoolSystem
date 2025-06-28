@@ -9,11 +9,19 @@ namespace DataModels.DBModels
 {
     public class Enrollment : RecordBase
     {
-        public int StudentID { get; set; }
-        public int CourseID { get; set; }
+        public string StudentID { get; set; }
+        public string CourseID { get; set; }
         public DateTime EnrollDate { get; set; }
 
         public Student Student { get; set; }
         public Course Course { get; set; }
+    }
+
+    public class EnrollmentDTO : RecordBase
+    {
+        public string StudentID { get; set; }
+        public string CourseID { get; set; }
+        public DateTime EnrollDate { get; set; }
+
     }
 }

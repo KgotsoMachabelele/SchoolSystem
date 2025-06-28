@@ -8,10 +8,10 @@ namespace DataModels.Classes
 {
     public interface IRecordBase
     {
-        int Id { get; set; }
+        string Id { get; set; }
     }
     public class RecordBase : IRecordBase
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 }

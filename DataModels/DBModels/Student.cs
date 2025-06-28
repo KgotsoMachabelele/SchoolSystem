@@ -10,7 +10,7 @@ namespace DataModels.DBModels
 {
     public class Student : RecordBase
     {
-        public int UserID {  get; set; }
+        public string UserID {  get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DateTime DOB { get; set; }
@@ -20,6 +20,15 @@ namespace DataModels.DBModels
 
         public ICollection<Enrollment> Enrollments { get; set; }
 
+
+    }
+    public class StudentDTO : RecordBase
+    {
+        public string UserID { get; set; }
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public DateTime DOB { get; set; }
+        public string GradeName { get; set; } = string.Empty;
 
     }
 }

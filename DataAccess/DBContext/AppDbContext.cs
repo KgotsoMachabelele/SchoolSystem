@@ -26,30 +26,42 @@ namespace DataAccess.DBContext
         {
             base.OnModelCreating(builder);
 
+
+            // User ↔ Student
             builder.Entity<Student>()
                 .HasOne(s => s.User)
                 .WithOne(u => u.Student)
-                .HasForeignKey<Student>(s => s.Id);
+                .HasForeignKey<Student>(s => s.UserID)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // User ↔ Teacher
             builder.Entity<Teacher>()
                 .HasOne(t => t.User)
-                .WithOne(t => t.Teacher)
-                .HasForeignKey<Teacher>(t => t.Id);
+                .WithOne(u => u.Teacher)
+                .HasForeignKey<Teacher>(t => t.UserID)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Teacher ↔ Courses
             builder.Entity<Teacher>()
                 .HasMany(t => t.Courses)
                 .WithOne(c => c.Teacher)
-                .HasForeignKey(c => c.Id);
+                .HasForeignKey(c => c.TeacherID)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Student ↔ Enrollment
             builder.Entity<Enrollment>()
                 .HasOne(e => e.Student)
                 .WithMany(s => s.Enrollments)
-                .HasPrincipalKey(e => e.Id);
+                .HasForeignKey(e => e.StudentID)
+                .OnDelete(DeleteBehavior.Restrict);  // ⚠️ This is the one causing the error
 
+            // Course ↔ Enrollment
             builder.Entity<Enrollment>()
-               .HasOne(e => e.Course)
-               .WithMany(s => s.Enrollments)
-               .HasPrincipalKey(e => e.Id);
+                .HasOne(e => e.Course)
+                .WithMany(c => c.Enrollments)
+                .HasForeignKey(e => e.CourseID)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
 
         }
